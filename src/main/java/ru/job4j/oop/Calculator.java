@@ -8,15 +8,6 @@ public class Calculator {
         return x + y;
     }
 
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        int rsl = calculator.multiply(5);
-        System.out.println(rsl);
-        System.out.println(minus(5));
-        System.out.println(calculator.divide(5));
-        System.out.println(calculator.sumAllOperation(5));
-    }
-
     public int multiply(int a) {
         return x * a;
     }
@@ -31,6 +22,15 @@ public class Calculator {
 
     public int sumAllOperation(int a) {
         return sum(a) + multiply(a) + divide(a);
+    }
+
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        int rsl = calculator.multiply(5);
+        System.out.println(rsl);
+        System.out.println(minus(5));
+        System.out.println(calculator.divide(5));
+        System.out.println(calculator.sumAllOperation(5));
     }
 
 }
