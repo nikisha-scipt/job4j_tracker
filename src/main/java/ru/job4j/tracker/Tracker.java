@@ -42,6 +42,21 @@ public class Tracker {
         return isReplace;
     }
 
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        int start = index + 1;
+        boolean isDelete = index < 0;
+        if (isDelete) {
+            isDelete = false;
+        } else {
+            System.arraycopy(this.items, start, this.items, index, this.size - index - 1);
+            items[size - 1] = null;
+            this.size--;
+            isDelete = true;
+        }
+        return isDelete;
+    }
+
     public Item[] findAll() {
         Item[] rsl = new Item[this.size];
         for (int i = 0; i < this.size; i++) {
