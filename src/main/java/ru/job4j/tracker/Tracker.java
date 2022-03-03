@@ -32,29 +32,24 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
-        boolean isReplace = index < 0;
-        if (isReplace) {
-            isReplace = false;
-        } else {
+        boolean rsl = index > -1;
+        if (rsl) {
             items[index].setName(item.getName());
-            isReplace = true;
         }
-        return isReplace;
+        return rsl;
     }
 
     public boolean delete(int id) {
         int index = indexOf(id);
         int start = index + 1;
-        boolean isDelete = index < 0;
-        if (isDelete) {
-            isDelete = false;
-        } else {
-            System.arraycopy(this.items, start, this.items, index, this.size - index - 1);
+        int length = this.size - index - 1;
+        boolean rsl = index != -1;
+        if (rsl) {
+            System.arraycopy(this.items, start, this.items, index, length);
             items[size - 1] = null;
             this.size--;
-            isDelete = true;
         }
-        return isDelete;
+        return rsl;
     }
 
     public Item[] findAll() {
@@ -70,14 +65,14 @@ public class Tracker {
 
     public Item[] findByName(String name) {
         Item[] rsl = new Item[this.size];
+        int count = 0;
         for (int i = 0; i < this.size; i++) {
             Item item = items[i];
             if (Objects.equals(item.getName(), name)) {
-                rsl[i] = item;
-                this.size--;
+                rsl[count++] = item;
             }
         }
-        rsl = Arrays.copyOf(rsl, this.size);
+        rsl = Arrays.copyOf(rsl, count);
         return rsl;
     }
 
