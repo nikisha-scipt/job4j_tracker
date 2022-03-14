@@ -3,13 +3,7 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartUI {
-
-    private final Output out;
-
-    public StartUI(Output out) {
-        this.out = out;
-    }
+public record StartUI(Output out) {
 
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;

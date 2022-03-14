@@ -1,12 +1,6 @@
 package ru.job4j.tracker;
 
-public class FindByNameItemAction implements UserAction {
-
-    private final Output out;
-
-    public FindByNameItemAction(Output out) {
-        this.out = out;
-    }
+public record FindByNameItemAction(Output out) implements UserAction {
 
     @Override
     public String name() {

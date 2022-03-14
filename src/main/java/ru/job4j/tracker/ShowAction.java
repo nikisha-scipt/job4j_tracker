@@ -1,12 +1,6 @@
 package ru.job4j.tracker;
 
-public class ShowAction implements UserAction {
-
-    private final Output out;
-
-    public ShowAction(Output out) {
-        this.out = out;
-    }
+public record ShowAction(Output out) implements UserAction {
 
     @Override
     public String name() {
