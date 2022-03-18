@@ -1,6 +1,12 @@
 package ru.job4j.tracker;
 
-public record DeleteItemAction(Output out) implements UserAction {
+public class DeleteItemAction implements UserAction {
+
+    private final Output out;
+
+    public DeleteItemAction(Output out) {
+        this.out = out;
+    }
 
     @Override
     public String name() {
