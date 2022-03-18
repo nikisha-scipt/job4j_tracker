@@ -18,7 +18,6 @@ public class DropArray {
             System.out.println(s);
         }
 
-        //System.arrayCopy
         String[] namesCopy = {"Petr", null, "Ivan", "Stepan", "Fedor"};
         System.arraycopy(namesCopy, 2, namesCopy, 1, 3);
         System.out.println(Arrays.toString(namesCopy));
