@@ -10,6 +10,9 @@ public class UsageHashSet {
         autos.add("BMW");
         autos.add("Volvo");
         autos.add("Toyota");
+        autos.add("Toyota");
+        autos.add("Toyota");
+        autos.add("Toyota");
         StringBuilder sb = new StringBuilder("[ ");
         for (String car : autos) {
             sb.append(car).append(" ");
