@@ -59,4 +59,24 @@ public class StringCompareTest {
         assertThat(rst, lessThan(0));
     }
 
+    @Test
+    public void whenFirstIsEmpty() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "",
+                "Danil"
+        );
+        assertThat(rst, lessThan(0));
+    }
+
+    @Test
+    public void whenSecondIsEmpty() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Danil",
+                ""
+        );
+        assertThat(rst, greaterThan(0));
+    }
+
 }
