@@ -6,7 +6,7 @@ public class ItemDescByName implements Comparator<Item> {
 
     @Override
     public int compare(Item itemFirst, Item itemSecond) {
-        return itemFirst.getName().compareTo(itemSecond.getName());
+        return itemSecond.getName().compareTo(itemFirst.getName());
     }
 
     @Override
