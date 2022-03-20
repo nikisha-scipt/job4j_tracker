@@ -10,28 +10,30 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!this.users.containsKey(user)) {
-            this.users.put(user, new ArrayList<Account>());
-        } else {
-            System.out.println("Such user has been added");
-        }
+        this.users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        this.users.get(user).add(account);
+        if (user != null) {
+            for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
+                List<Account> accountList = entry.getValue();
+                if (!accountList.contains(account)) {
+                    this.users.get(user).add(account);
+                    break;
+                }
+            }
+        }
+
     }
 
     public User findByPassport(String passport) {
-        User user = null;
-        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-            User entryUser = entry.getKey();
-            if (entryUser.getPassport().equals(passport)) {
-                user = entryUser;
-                break;
+        for (User key : users.keySet()) {
+            if (key.getPassport().equals(passport)) {
+                return key;
             }
         }
-        return user;
+        return null;
     }
 
     public Account findByRequisite(String passport, String requisite) {
@@ -55,22 +57,13 @@ public class BankService {
         Account accountSrc = findByRequisite(srcPassport, srcRequisite);
         Account accountDest = findByRequisite(destPassport, destRequisite);
         if (accountSrc != null && accountDest != null) {
-            accountSrc.setBalance(accountSrc.getBalance() - amount);
-            accountDest.setBalance(accountDest.getBalance() + amount);
+            if (accountSrc.getBalance() >= amount) {
+                accountSrc.setBalance(accountSrc.getBalance() - amount);
+                accountDest.setBalance(accountDest.getBalance() + amount);
+            }
             rsl = true;
         }
         return rsl;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-            User user = entry.getKey();
-            List<Account> accountList = entry.getValue();
-            stringBuilder.append("User: ").append(user).append("\n").append("This user has account: ").append(accountList);
-        }
-        return stringBuilder.toString();
     }
 
 }
