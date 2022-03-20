@@ -3,7 +3,7 @@ package ru.job4j.collection;
 import org.junit.Test;
 import java.util.Comparator;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class JobTest {
 
