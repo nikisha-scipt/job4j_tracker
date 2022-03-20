@@ -35,7 +35,7 @@ public class SortTest {
         Item itemThree = new Item(2, "Three");
         Item itemFour = new Item(5, "Four");
         List<Item> itemList = Arrays.asList(itemOne, itemTwo, itemThree, itemFour);
-        Collections.sort(itemList, new ItemDescByName().reversed());
+        Collections.sort(itemList, new ItemDescByName());
         List<Item> expected = Arrays.asList(
                 itemTwo,
                 itemThree,
