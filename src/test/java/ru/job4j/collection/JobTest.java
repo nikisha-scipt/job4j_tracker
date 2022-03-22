@@ -72,7 +72,7 @@ public class JobTest {
         Comparator<Job> ascComp = new JobAscByName().thenComparing(new JobAscByPriority());
         int res = ascComp.compare(
                 new Job("test1", 0),
-                new Job("test2", 2)
+                new Job("test1", 2)
         );
         assertThat(res, lessThan(0));
     }
