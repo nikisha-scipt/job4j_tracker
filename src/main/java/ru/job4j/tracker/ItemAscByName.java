@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class ItemAscByName implements Comparator<Item> {
 
     @Override
-    public int compare(Item itemFirst, Item itemSecond) {
-        return itemFirst.getName().compareTo(itemSecond.getName());
+    public int compare(Item first, Item second) {
+        return first.getName().compareTo(second.getName());
     }
 }

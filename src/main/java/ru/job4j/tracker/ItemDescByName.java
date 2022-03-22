@@ -5,12 +5,8 @@ import java.util.Comparator;
 public class ItemDescByName implements Comparator<Item> {
 
     @Override
-    public int compare(Item itemFirst, Item itemSecond) {
-        return itemSecond.getName().compareTo(itemFirst.getName());
+    public int compare(Item first, Item second) {
+        return second.getName().compareTo(first.getName());
     }
 
-    @Override
-    public Comparator<Item> reversed() {
-        return Comparator.super.reversed();
-    }
 }
