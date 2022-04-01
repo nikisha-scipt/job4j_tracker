@@ -33,10 +33,7 @@ public class FuncDiapasonTest {
 
     @Test
     public void whenDemonstrationFunction() {
-        List<Double> result = FuncDiapason.diapason(5, 8, x -> {
-            int constValue = 2;
-            return Math.pow(constValue, x);
-        });
+        List<Double> result = FuncDiapason.diapason(5, 8, x -> Math.pow(2, x));
         List<Double> expected = Arrays.asList(32D, 64D, 128D);
         assertThat(result, is(expected));
     }
