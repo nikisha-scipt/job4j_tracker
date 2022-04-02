@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * this class is general service
@@ -52,6 +49,17 @@ public class BankService {
                 .orElse(null);
     }
 
+    public Optional<User> findByPassportOfOptional(String passport) {
+        Optional<User> result = Optional.empty();
+        for (User user: users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                result = Optional.of(user);
+                break;
+            }
+        }
+        return result;
+    }
+
     /**
      * the method searches for the user's account by requisite
      * @param passport helps to find a user
@@ -93,6 +101,15 @@ public class BankService {
             rsl = true;
         }
         return rsl;
+    }
+
+    public static void main(String[] args) {
+        BankService bankService = new BankService();
+        bankService.addUser(new User("321", "Danil Nikishin"));
+        Optional<User> optionalUser = bankService.findByPassportOfOptional("3211");
+        if (optionalUser.isPresent()) {
+            System.out.println(optionalUser.get().getUsername());
+        }
     }
 
 }
